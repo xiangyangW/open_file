@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
-#include <QItemSelectionModel>//check if it's used
+#include <QItemSelectionModel>
 
-#define ROW_SIZE 3
+#define COL_SIZE 3
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,18 +14,27 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    QStandardItemModel *the_model_;
-    QItemSelectionModel *the_selec_;//check if it's used
-    void iniModelFromStringList (QStringList&);
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void on_bt_op_file_clicked();
+    void on_pbtn_op_file_clicked();
+
+    void on_pbtn_add_clicked();
+
+    void on_pbtn_dlt_clicked();
+
+    void selec_to_model();
+
+private:
+    void iniModelFromStringList (QStringList&);
 
 private:
     Ui::MainWindow *ui;
+
+    QStandardItemModel *the_model_;
+    QItemSelectionModel *the_selec_;
 };
 #endif // MAINWINDOW_H
