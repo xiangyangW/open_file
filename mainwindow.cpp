@@ -34,6 +34,7 @@ void MainWindow::on_pbtn_open_file_clicked()
     if (file.open(QFile::ReadOnly | QFile::Text)) {
 
         QTextStream stream(&file);
+        stream.setCodec("UTF-8");
         while (!stream.atEnd()) {
             QString str = stream.readLine();
             file_rcontent.append(str);
