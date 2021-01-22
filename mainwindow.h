@@ -20,7 +20,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_bt_op_file_clicked();
+    void on_pbtn_open_file_clicked();
 
 private:
     void iniModelFromStringList (QStringList&);

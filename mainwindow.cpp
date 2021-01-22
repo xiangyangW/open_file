@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <QString>
 #include <QFileDialog>
 #include <QFile>
@@ -18,11 +19,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_bt_op_file_clicked()
+void MainWindow::on_pbtn_open_file_clicked()
 {
     QString filter = "TEXT File (*.txt)";
     QString file_path = QFileDialog::getOpenFileName(this,"choose a txt file","c://Users/user/Desktop/",filter);
-    ui->le_path->setText(file_path);
+    ui->lineEdit_path->setText(file_path);
 
     if(file_path.isEmpty()) return;
 
