@@ -40,7 +40,7 @@ void MainWindow::on_pbtn_open_file_clicked()
         }
         file.close();
 
-        the_model_ = new QStandardItemModel;
+        the_model_ = new QStandardItemModel(this);
 
         //transfer the str list into a standard item and put the item in the model
         iniModelFromStringList(file_rcontent);
