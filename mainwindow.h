@@ -14,9 +14,6 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    QStandardItemModel *the_model_;
-    QItemSelectionModel *the_selec_;//check if it's used
-    void iniModelFromStringList (QStringList&);
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -26,6 +23,12 @@ private slots:
     void on_bt_op_file_clicked();
 
 private:
+    void iniModelFromStringList (QStringList&);
+
+private:
     Ui::MainWindow *ui;
+
+    QStandardItemModel *the_model_;
+    QItemSelectionModel *the_selec_;//check if it's used
 };
 #endif // MAINWINDOW_H
