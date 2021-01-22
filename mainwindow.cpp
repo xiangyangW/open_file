@@ -22,19 +22,19 @@ MainWindow::~MainWindow()
 void MainWindow::on_pbtn_open_file_clicked()
 {
     QString filter = "TEXT File (*.txt)";
-    QString file_path = QFileDialog::getOpenFileName(this,"choose a txt file","c://Users/user/Desktop/",filter);
+    QString file_path = QFileDialog::getOpenFileName(this, "choose a txt file", "c://Users/user/Desktop/", filter);
     ui->lineEdit_path->setText(file_path);
 
-    if(file_path.isEmpty()) return;
+    if (file_path.isEmpty())
+        return;
 
-    //put the content in txt to a stringlist row by row
+    // put the content in txt to a stringlist row by row
     QStringList file_rcontent;
     QFile file(file_path);
-    if (file.open(QFile::ReadOnly | QFile::Text))
-    {
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+
         QTextStream stream(&file);
-        while (!stream.atEnd())
-        {
+        while (!stream.atEnd()) {
             QString str = stream.readLine();
             file_rcontent.append(str);
         }
@@ -65,7 +65,6 @@ void MainWindow::iniModelFromStringList(QStringList& file_rcontent)
 
     //處理表格數據
     QStringList temp_list;
-    int j;
     QStandardItem *item;
 
 //    for (int i=0; i<row_cnt; i++)
@@ -82,18 +81,17 @@ void MainWindow::iniModelFromStringList(QStringList& file_rcontent)
 //        }
 //    }
 
-    for(int i=0; i<row_cnt ; i++)
-    {
+    for (int i = 0; i < row_cnt ; i++) {
+
         //split the string in each row and put into temp_list
         QString rtext = file_rcontent.at(i);
         QStringList temp_list = rtext.split(";");
         temp_list.removeLast();
 
-        for(j=0; j<ROW_SIZE; j++)
-        {
+        for (int j = 0; j < temp_list.count(); j++) {
+
             item = new QStandardItem(temp_list.at(j));
-            the_model_->setItem(i,j,item);
+            the_model_->setItem(i, j, item);
         }
     }
-
 }
