@@ -55,7 +55,6 @@ void MainWindow::on_pbtn_open_file_clicked()
 
 void MainWindow::iniModelFromStringList(QStringList& file_rcontent)
 {
-    the_model_->setRowCount(3);
     int row_cnt = file_rcontent.count();
     the_model_->setRowCount(row_cnt);
 
@@ -64,7 +63,6 @@ void MainWindow::iniModelFromStringList(QStringList& file_rcontent)
     the_model_->setHorizontalHeaderLabels(header_list);
 
     //處理表格數據
-    QStringList temp_list;
     QStandardItem *item;
 
 //    for (int i=0; i<row_cnt; i++)
